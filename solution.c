@@ -7,13 +7,13 @@ int main(int argc, char *argv[]) {
       int returnCode=system(argv[i])==-1;
       if(returnCode==-1){
          printf("Command \"%s\" failed!", argv[i]);
+         printf("\n");
       }else{
          char toAppend[21];
          strcat(toAppend,argv[i]);
          strcat(toAppend,"\n");
          fputs(toAppend,fp);
       }
-      printf("\n");
    }
    fclose(fp);
    return 0;
