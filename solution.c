@@ -2,10 +2,10 @@
 #include<string.h>
 #include<stdio.h>
 int main(int argc, char *argv[]) {
-   printf("%d",argc);
    FILE *fp = fopen(argv[3], "ab+");
    for(int i =1;i<argc-1;i++){
-      if(system(argv[i])==-1){
+      int returnCode=system(argv[i])==-1;
+      if(returnCode==-1){
          printf("Command \"%s\" failed!", argv[i]);
       }else{
          char toAppend[21];
@@ -13,8 +13,8 @@ int main(int argc, char *argv[]) {
          strcat(toAppend,"\n");
          fputs(toAppend,fp);
       }
+      printf("\n");
    }
-   printf("\n");
    fclose(fp);
    return 0;
 }
